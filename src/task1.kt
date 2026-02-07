@@ -1,9 +1,7 @@
-fun separation_by_space(){
-    val input: String? = readlnOrNull()
-    val list = input?.split(" ")
-    list?.forEach {println(it)}
+fun separation_by_space(input: Array<String>?){
+    input?.forEach {println(it)}
 }
 
-fun main(){
-    separation_by_space()
+fun main(args: Array<String>){
+    separation_by_space(args)
 }
