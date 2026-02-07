@@ -4,6 +4,6 @@ fun separation_by_space_filter_alf_distinct(input: Array<String>?){
         ?.forEach {println(it)}
 }
 
-fun main(args: Array<String>)){
+fun main(args: Array<String>){
     separation_by_space_filter_alf_distinct(args)
 }
