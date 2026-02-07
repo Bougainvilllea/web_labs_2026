@@ -1,5 +1,4 @@
 fun separation_by_space_filter_num(){
-    println("Введите строку: ")
     val input: String? = readlnOrNull()
     val list = input?.split(" ")
         ?.sorted()?.groupingBy { it }
@@ -7,7 +6,7 @@ fun separation_by_space_filter_num(){
         ?.toList()
         ?.sortedWith(compareByDescending<Pair<String, Int>> { it.second }.thenBy { it.first })
 
-    list?.forEach {(key, value) -> println("$key: $value") }
+    list?.forEach {(key, value) -> println("$key $value") }
 }
 
 fun main(){

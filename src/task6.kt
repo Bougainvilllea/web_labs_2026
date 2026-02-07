@@ -12,14 +12,13 @@ fun separation_by_space_filter_stdin(input: String) : List<Pair<String, Int>> {
 }
 
 fun main(args: Array<String>) {
-    println("Введите строку: ")
     if (args.isNotEmpty()) {
         val input = args.joinToString(" ")
-        separation_by_space_filter_stdin(input).forEach {(key, value) -> println("$key: $value") }
+        separation_by_space_filter_stdin(input).forEach {(key, value) -> println("$key $value") }
     }
     else {
         val scanner = Scanner(System.`in`)
-        separation_by_space_filter_stdin(scanner.nextLine()).forEach {(key, value) -> println("$key: $value")}
+        separation_by_space_filter_stdin(scanner.nextLine()).forEach {(key, value) -> println("$key $value")}
         scanner.close()
     }
 }
