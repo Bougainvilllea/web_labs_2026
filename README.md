@@ -206,6 +206,35 @@ GET("$baseUrl/$path") {
 
 ---
 
+## Настройка LiveReload Spring Boot DevTools
+Этот пакет нужен для быстрой сборки уже запущенного приложения Spring Boot при изменениях исходников.  
+Для начала нужно добавить DevTools в проект. Нужный код для вставки в конфиг сборщика можно найти по [ссылке](https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-devtools). Ну или:
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-devtools</artifactId>
+    <optional>true</optional>
+</dependency>
+```
+Если вы не используете Intellij IDEA UE, то само по себе у вас пересобираться ничего не будет.  
+Есть множество различиных способов "подсунуть" изменения спрингу. Суть в том, чтобы отслеживать изменения исходников и перекомпилировать нужные файлы, тогда DevTools их увидит и перезапустит приложение.  
+- Наиболее простой вариант - через связку `find` и `exec`:
+```shell
+find src/main -type f \( -name "*.kt" -o -name "*.java" -o -name "*.properties" -o -name "*.yml" -o -name "*.yaml" -o -name "*.xml" \) \
+ | entr -r ./mvnw -q -DskipTests compile
+```
+- Если вы используете Windows, первый вариант может не подойти. Тогда воспользуйтесь утилитой `chokidar`.
+```shell
+npm install -g chokidar-cli
+
+# ./mvnw - если все таки у вас UNIX-подобная система
+chokidar "src/main/**/*.{kt,java,properties,yml,yaml,xml}" -c "./mvnw.cmd -q -DskipTests compile"
+```
+
+Запустите какую-то из этих команд в терминале, в корне проекта, а потом и само приложение. Теперь у вас будет Live Reload в вашем Spring Boot проекте.
+
+---
+
 ## Задание
 Используя этот репозиторий в качестве `шаблона` (то есть склонируйте его себе и потом залейте себе), выполните следующие задания.
 
